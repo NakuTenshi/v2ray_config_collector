@@ -32,7 +32,7 @@ def testSubscriptionConfigs(sub_url):
                         try:
                             client.connect(addr_port)
                             with open("configs.txt", "a") as f:
-                                f.write(f"{config}\n")
+                                f.write(f"{config}\n\n")
                             
                         except TimeoutError: # timeout
                             continue
