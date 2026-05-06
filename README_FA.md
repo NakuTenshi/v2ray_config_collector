@@ -1,8 +1,7 @@
 # v2ray config collector
 <a href="https://github.com/NakuTenshi/v2ray_config_collector/">English</a>
 
-
-```collect.py``` یک اسکپریت پاینونی هست که میگیره از سورس های ارایه شده در سایت ```raw.githubusercontent.com``` که مربوط به کافیگ های v2ray هستش رو جمع اولی میکنه و اوناهارو تست TCP انجام میده
+فایل `collect.py` یک اسکریپت پایتون است که پیکربندی‌های (configs) v2ray را از منابع داده شده در `raw.githubusercontent.com` جمع‌آوری کرده و آن‌ها را از طریق TCP handshake تست می‌کند.
 
 
 ## نحوه استفاده
