@@ -1,5 +1,7 @@
 import os
+import sys
 import json
+import ctypes
 import base64
 import socket
 import logging
@@ -10,8 +12,11 @@ from python_v2ray.config_parser import parse_uri
 logging.disable(logging.WARNING)
 
 def testSubscriptionConfigs(sub_url):
-    global x 
+    global x , sources_done_length, sources_length
+    
+    project_id = f'{sub_url.split("/")[3]}/{sub_url.split("/")[3]}'
     response = requests.get(sub_url, stream=True)
+
 
     if response.status_code == 200:
         for config in response.iter_lines():
@@ -38,14 +43,26 @@ def testSubscriptionConfigs(sub_url):
                         except OSError: # No route to host (parsing problem)
                             continue
 
-if not os.path.exists("sources.txt"):
-    print("sources.txt doesn't find")
-    exit()
+        sources_done_length += 1 
+        print(f"[INFO] ({sources_done_length}/{sources_length}) {project_id} is done.")                       
 
-with open("sources.txt" , "r") as f:
-    source_urls = f.readlines()
-    source_urls = list(set(source_urls))
 
-for url in source_urls:
-    url = url.strip()
-    threading.Thread(target=testSubscriptionConfigs, args=[url]).start()
+if __name__ == "__main__":
+    try:
+        if not os.path.exists("sources.txt"):
+            print("sources.txt doesn't find")
+            exit()
+
+        with open("sources.txt" , "r") as f:
+            source_urls = f.readlines()
+            source_urls = list(set(source_urls))
+
+        sources_length = len(source_urls)
+        sources_done_length = 0
+
+        print(f"[INFO] Colecting from {sources_length} sourcess")
+        for url in source_urls:
+            url = url.strip()
+            threading.Thread(target=testSubscriptionConfigs, args=[url]).start()
+    except KeyboardInterrupt:
+        print("bye")
