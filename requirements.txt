@@ -6,7 +6,5 @@ protobuf==7.34.1
 PySocks==1.7.1
 python_v2ray==0.1.8
 requests==2.33.1
-termcolor==3.3.0
 typing_extensions==4.15.0
 urllib3==2.6.3
-yaspin==3.4.0
