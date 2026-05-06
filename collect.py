@@ -14,7 +14,7 @@ logging.disable(logging.WARNING)
 def testSubscriptionConfigs(sub_url):
     global x , sources_done_length, sources_length
     
-    project_id = f'{sub_url.split("/")[3]}/{sub_url.split("/")[3]}'
+    project_id = f'{sub_url.split("/")[3]}/{sub_url.split("/")[4]}'
     response = requests.get(sub_url, stream=True)
 
 
