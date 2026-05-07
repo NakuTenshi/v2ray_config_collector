@@ -39,7 +39,7 @@ enjoy
 ## tips 
 
 after collecting the configs may be more than 1000 and be difficult to paste it to mobile version of v2ray,
-you can split the ``` configs.txt ``` file with this command:
+you can split the ``` ./configs/configs.txt ``` file with this command:
 
 ```bash
 split -l 1000 -d --additional-suffix=.txt configs.txt config_

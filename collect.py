@@ -31,8 +31,8 @@ def testSubscriptionConfigs(sub_url):
                         client.settimeout(2.0)
                         try:
                             client.connect(addr_port)
-                            with open("configs.txt", "a") as f:
-                                f.write(f"{config}\n\n")
+                            with open("./configs/configs.txt", "a") as f:
+                                f.write(f"{config}\n")
                             
                         except TimeoutError: # timeout
                             continue
@@ -52,6 +52,10 @@ if __name__ == "__main__":
         if not os.path.exists("sources.txt"):
             print("sources.txt doesn't find")
             exit()
+        
+        if not os.path.exists("./configs"):
+            os.mkdir("./configs")
+
 
         with open("sources.txt" , "r") as f:
             source_urls = f.readlines()
